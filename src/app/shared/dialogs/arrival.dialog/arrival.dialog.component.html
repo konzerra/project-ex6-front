@@ -1,0 +1,29 @@
+
+<div class="custom-dialog">
+  <div class="panel-arrival ">
+    <label class="pt-2 ">Потвердите прибытие</label>
+    <div class="form-panel-white-on-dark">
+      <div class="form-input">
+        <label class="" for="email"> Причина опоздания </label>
+        <input type="text"
+               id="email"
+               class=""
+               [formControl]="reason"
+               placeholder="Введите причину"
+               required autofocus="autofocus" />
+        <div *ngIf="checkFormControl(reason)"
+             class="alert-danger">
+          <div *ngIf="checkFormControl(reason)">
+            Введите причину
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-sm gf-btn-white w-50 mb-2"
+            [disabled]="arrivedActionDisabled"
+            (click)="arrived()">Потвердить
+    </button>
+  </div>
+</div>
+

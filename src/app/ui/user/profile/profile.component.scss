@@ -1,0 +1,73 @@
+@import "../../../../assets/colors";
+@import "../../../../assets/buttons";
+
+.img-profile{
+  height: 200px;
+  width: auto;
+}
+
+.gf-container{
+  width: 100%;
+  height: 100vh;
+}
+
+
+.right-col{
+  margin-left: auto; /* This pushes the right column to the right */
+  margin-right: 0;
+  padding: 0 0;
+}
+
+.panel-arrival{
+  width: 100%;
+  min-height: 100px;
+  background: $gf-dark-blue;
+  text-align: center;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  button {
+    margin-top: auto; /* Push the button to the bottom, centering it horizontally */
+  }
+  label{
+    color: $gf-white;
+  }
+
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.slide-in {
+  animation: slideIn 1300ms ease-in forwards;
+}
+
+.slide-out {
+  animation: slideOut 300ms ease-out forwards;
+}
+
+.vertical-bar{
+  background: $gf-dark-blue;
+  width: 100%;
+  height: 1px;
+}
+.link-logout{
+  color: red;
+  cursor: pointer;
+}

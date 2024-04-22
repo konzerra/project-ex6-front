@@ -1,0 +1,74 @@
+@import "src/assets/colors";
+
+.gf-btn-white{
+  display: inline-block;
+  background-color: $gf-white;
+  color: $gf-dark-blue;
+  text-align: center;
+  padding: 7px 7px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  &:hover {
+    background-color: $gf-dark-blue;
+    color: $gf-white;
+    border: 2px solid $gf-white;
+  }
+}
+
+
+.gf-btn-dark{
+  display: inline-block;
+  background-color: $gf-dark-blue;
+  color: $gf-white;
+  text-align: center;
+  padding: 7px 7px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  &:hover {
+    background-color: #384750;
+    color: $gf-white;
+    border: 2px solid $gf-dark-blue;
+  }
+}
+
+
+.gf-btn-dark-on-white{
+  display: inline-block;
+  background-color: $gf-dark-blue;
+  color: $gf-white;
+  text-align: center;
+  padding: 7px 7px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 8px;
+  border: 2px solid $gf-dark-blue;
+  &:hover {
+    background-color: #384750;
+    color: $gf-white;
+    border: 2px solid $gf-dark-blue;
+  }
+}
+.gf-btn-white-on-white{
+  display: inline-block;
+  background-color: $gf-white;
+  color: $gf-dark-blue;
+  text-align: center;
+  padding: 7px 7px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  border: 2px solid $gf-dark-blue;
+  &:hover {
+    background-color: $gf-dark-blue;
+    color: $gf-white;
+  }
+}
+
+.gf-btn-small{
+  font-size: 12px; /* You can adjust the font size as needed */
+  padding: 5px 10px; /* You can adjust the padding as needed */
+  border-radius: 4px;
+}
+
+.gf-check-box-btn{
+  padding: 0;
+}

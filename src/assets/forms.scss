@@ -1,0 +1,92 @@
+@import "src/assets/colors";
+@import "src/assets/buttons";
+.form-panel-white-on-dark{
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+  border-radius: 7px;
+  form{
+    background-color: transparent;
+  }
+  input{
+    background-color: transparent;
+  }
+  div{
+    background-color: transparent;
+  }
+  .form-input{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    label {
+      color: $gf-white; // Set the text color for the label
+    }
+
+    input{
+      width: 100%;
+      background-color: transparent;
+      color: $gf-white; // Set the text color
+      border: 2px solid $gf-white;
+      &::placeholder {
+        color: $gf-weak-white; // Set the placeholder color
+      }
+      padding: 7px;
+      outline: $gf-white;
+      transition: outline-color 0.3s ease;
+      &:focus {
+        outline-color: $gf-white;
+      }
+    }
+    .alert-danger{
+      background-color: $gf-white;
+      color: $gf-weak-dark-blue;
+      width: 100%;
+    }
+  }
+
+}
+
+
+.form-panel-dark-on-white{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  form{
+    width: 100%;
+  }
+  .form-input{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 0;
+    width: 100%;
+    label {
+      color: $gf-dark-blue; // Set the text color for the label
+    }
+
+    input{
+      width: 100%;
+      background-color: transparent;
+      color: $gf-dark-blue; // Set the text color
+      border: 2px solid $gf-dark-blue;
+      &::placeholder {
+        color: $gf-weak-dark-blue; // Set the placeholder color
+      }
+      padding: 7px;
+      outline: $gf-dark-blue;
+      transition: outline-color 0.3s ease;
+      &:focus {
+        outline-color: $gf-dark-blue;
+      }
+    }
+    .alert-danger{
+      background-color: $gf-dark-blue;
+      color: $gf-weak-white;
+      width: 100%;
+    }
+  }
+
+}
+
+
+

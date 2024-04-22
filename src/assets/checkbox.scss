@@ -1,0 +1,38 @@
+@import "src/assets/colors";
+
+.gf-checkbox {
+
+  padding: 3px;
+  // styles for the custom checkbox label
+  & + label {
+    position: relative;
+    padding-left: 10px; // the space between the checkbox and label
+    cursor: pointer;
+  }
+  // Create the checkbox icon
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px; // Adjust the size of the checkbox
+    height: 20px; // Adjust the size of the checkbox
+    border: 2px solid #007bff; // Border color
+    background-color: white; // Background color
+  }
+
+  // Style the checked state of the custom checkbox
+  & + input[type="checkbox"]:checked::before {
+    background-color: #007bff; // Background color when checked
+  }
+
+  // Optional: Add hover effect
+  &:hover::before {
+    border-color: #0056b3; // Border color on hover
+  }
+
+  // Optional: Add a transition for smooth animation
+  &::before {
+    transition: all 0.2s;
+  }
+}

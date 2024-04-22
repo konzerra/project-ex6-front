@@ -1,0 +1,56 @@
+
+<mat-sidenav-container>
+  <mat-sidenav opened="true" mode="side" [style.width]="'250px'">
+    <mat-tree class="w-100" [dataSource]="dataSource" [treeControl]="treeControl">
+      <!-- This is the tree node template for leaf nodes -->
+      <mat-tree-node class="w-100" *matTreeNodeDef="let node" >
+        <!-- use a disabled button to provide padding for tree leaf -->
+        <mat-nav-list class="w-100 p-0" (click)="subCategoryClicked(node)">
+          <a mat-list-item class="center-text">
+           <span >
+              {{node.name}}
+            </span>
+          </a>
+
+        </mat-nav-list>
+
+      </mat-tree-node>
+      <!-- This is the tree node template for expandable nodes -->
+      <mat-tree-node class="w-100" *matTreeNodeDef="let node;when: hasChild">
+        <mat-nav-list class="w-100 p-0" matTreeNodeToggle
+                      [attr.aria-label]="'Toggle ' + node.name">
+          <a mat-list-item >
+            <mat-icon matListItemIcon class="mat-icon-rtl-mirror" >
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+            <span matListItemTitle>
+              {{node.name}}
+            </span>
+          </a>
+        </mat-nav-list>
+
+      </mat-tree-node>
+    </mat-tree>
+    <mat-divider></mat-divider>
+    <mat-nav-list class="w-100 p-0">
+      <a mat-list-item routerLink="/cart">
+        <mat-icon matListItemIcon class="mat-icon-rtl-mirror" >
+        </mat-icon>
+        <span matListItemTitle>About</span>
+      </a>
+      <a mat-list-item routerLink="/checkout/cart">
+        <mat-icon matListItemIcon class="mat-icon-rtl-mirror" >
+        </mat-icon>
+        <span matListItemTitle>Cart</span>
+      </a>
+      <a mat-list-item routerLink="/user">
+        <mat-icon matListItemIcon class="mat-icon-rtl-mirror" >
+        </mat-icon>
+        <span matListItemTitle>User</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

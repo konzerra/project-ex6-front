@@ -1,0 +1,15 @@
+<body>
+<div class="container">
+  <div [class.panel]="true" [class.rotate]="authViewService.rotated">
+    <div class="front " >
+      <app-signin></app-signin>
+    </div>
+    <div class="back">
+      <div *ngIf="authViewService.action ==='success'" style="height: 100%">
+        <app-auth-success></app-auth-success>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>

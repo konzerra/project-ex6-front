@@ -1,0 +1,39 @@
+<div>
+  <h2>Products</h2>
+  <mat-form-field>
+    <mat-label>Sort</mat-label>
+    <mat-select [(ngModel)]="selectedSorting" name="food"
+                (selectionchange)="onSortChange($event)"
+    >
+      <mat-option *ngFor="let sort of sorting"
+        [value]="sort.value">{{sort.viewValue}}
+      </mat-option>
+
+    </mat-select>
+  </mat-form-field>
+  <div class="grid-container">
+      <div *ngFor="let product of modelPage.content">
+        <mat-card class="example-card" >
+        <img class="card-image" mat-card-image src="{{product.images[0]}}" alt="Photo of a product">
+        <mat-card-content>
+          <p>
+            {{product.name}}
+          </p>
+          <span>Price: {{ product.price }}$</span>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-button (click)="addToCart(product)">to Cart</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+      </div>
+</div>
+<mat-paginator
+    [length]="modelPage.totalElements"
+    [pageSize]="modelPage.size"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="onPageChange($event)"
+  >
+</mat-paginator>
+</div>

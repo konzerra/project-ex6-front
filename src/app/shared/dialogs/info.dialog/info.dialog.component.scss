@@ -1,0 +1,24 @@
+@import "src/assets/colors";
+@import "src/assets/buttons";
+
+.info-panel{
+  min-width: 250px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  button {
+    margin-top: auto; /* Push the button to the bottom, centering it horizontally */
+  }
+  max-width: 70vh;
+}
+
+.row{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+
+}
+.gf-btn-dark-on-white{
+  border-radius: 0;
+}
