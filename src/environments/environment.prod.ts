@@ -1,5 +1,5 @@
 
 export const environment = {
   production: true,
-  apiIp: "http://localhost:8080"
+  apiIp: "https://node179338-news1lkroad.sh2.hidora.net"
 };
