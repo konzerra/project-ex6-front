@@ -45,10 +45,6 @@ h1, h2, h3, p, label, div, button, card{
 body {
   position: relative;
   font-family: "Rubik", sans-serif;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(202, 202, 202, 0.2);
 }
 
 .title-input {
@@ -68,8 +64,8 @@ table{
 }
 
 .alert-dark{
-  background: $gf-weak-dark-blue;
-  color: $gf-white;
+  background: $p-weak-dark-blue;
+  color: $p-white;
   position: absolute;
   width: 100%;
 }

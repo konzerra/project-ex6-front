@@ -1,18 +1,20 @@
-<div class="gf-container ps-4">
+<div class="p-container ps-4">
   <div class="row">
     <!-- Left Column - User Information -->
-    <div class="col-md-6 mt-4 order-sm-1">
-      <div class="row">
-        <!-- User Profile Image -->
-        <div class="col-auto">
-          <img src="{{'/assets/images/default_user.jpg'}} "
-               alt="User Profile Image" class="img-fluid img-profile rounded">
-        </div>
-        <!-- User Information -->
-        <div class="col-auto pt-3 ">
-          <h3>{{user?.name + ' '}}</h3>
-        </div>
-      </div>
+    <div class="col-md-3 mt-4 order-sm-1">
+      <h3>{{user?.name + ' '}}</h3>
+      <mat-divider></mat-divider>
+      <br>
+      <p class="menu-item" routerLink="/checkout/cart">Cart</p>
+
+      <p class="menu-item" (click)="onMenuChanged('address')">Address</p>
+
+      <mat-divider></mat-divider>
+      <label class="link-logout" (click)="logout()">Logout</label>
+    </div>
+
+    <div class="col-md-4 mt-4 order-sm-1">
+      <app-user-address *ngIf="menu==='address'"></app-user-address>
     </div>
 
 

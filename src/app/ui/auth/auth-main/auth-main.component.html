@@ -1,15 +1,27 @@
-<body>
-<div class="container">
-  <div [class.panel]="true" [class.rotate]="authViewService.rotated">
-    <div class="front " >
-      <app-signin></app-signin>
-    </div>
-    <div class="back">
-      <div *ngIf="authViewService.action ==='success'" style="height: 100%">
-        <app-auth-success></app-auth-success>
+<div class="auth-container">
+  <div class="container">
+    <div [class.panel]="true" [class.rotate]="authViewService.currentSide">
+      <div class="front " >
+        <div *ngIf="authViewService.actionFront ==='loading-front'" style="height: 100%">
+          <app-auth-success></app-auth-success>
+        </div>
+        <div *ngIf="authViewService.actionFront ==='signup'" style="height: 100%">
+          <app-signup></app-signup>
+        </div>
+        <div *ngIf="authViewService.actionFront ==='signin'" style="height: 100%">
+          <app-signin></app-signin>
+        </div>
       </div>
-
+      <div class="back">
+        <div *ngIf="authViewService.actionBack ==='loading-back'" style="height: 100%">
+          <app-auth-success></app-auth-success>
+        </div>
+        <div *ngIf="authViewService.actionBack ==='signup-from-signin'" style="height: 100%">
+          <app-signup></app-signup>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-</body>
+
+

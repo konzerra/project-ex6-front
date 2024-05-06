@@ -1,0 +1,31 @@
+<div class="info-panel">
+  <label class=" m-3">Comment</label>
+
+  <div class="form-panel-dark-on-white w-100 form mb-4">
+    <div class="d-flex justify-content-between align-items-center ">
+        <div class="ratings" *ngFor="let star of ratingStar.stars, let i = index">
+            <i class="fa fa-star " [ngClass]="star.checked? 'rating-color' : '' "
+            (click) = "rate(i)"
+            ></i>
+        </div>
+      </div>
+      <textarea type="text"
+             id="comment"
+             class="form-input" rows="3"
+             [formControl]="comment"
+             placeholder="Enter comment"
+             required autofocus="autofocus"></textarea>
+      <div *ngIf="checkFormControl(comment)"
+           class="alert-danger-parent">
+        <div class="alert-danger" *ngIf="checkFormControl(comment)">
+          Enter comment
+        </div>
+      </div>
+  </div>
+  <div class="to-bottom">
+    <div class="row ">
+      <button id="yes-button" class="  p-btn-dark w-50 " [mat-dialog-close]="true">Save</button>
+      <button id="no-button" class="  p-btn-white w-50" [mat-dialog-close]="false">Cancel</button>
+    </div>
+  </div>
+</div>

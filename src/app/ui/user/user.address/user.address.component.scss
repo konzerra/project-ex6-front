@@ -1,0 +1,15 @@
+@import "src/assets/colors";
+@import "src/assets/forms";
+
+.grid-container {
+  width: 100%;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates three columns of equal width */
+  gap: 20px; /* Space between cards */
+}
+
+.save-btn{
+  padding-left: 22px;
+  padding-right: 22px;
+}

@@ -7,8 +7,9 @@ import { ConfirmDialogComponent } from './dialogs/confirm.dialog/confirm.dialog.
 import { InfoDialogComponent } from './dialogs/info.dialog/info.dialog.component';
 import { DeleteDialogComponent } from './dialogs/delete.dialog/delete.dialog.component';
 import { GenericDialogComponent } from './dialogs/generic-dialog/generic-dialog.component';
-import { ArrivalDialogComponent } from './dialogs/arrival.dialog/arrival.dialog.component';
+
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { CommentDialogComponent } from './dialogs/comment.dialog/comment.dialog.component';
 
 
 
@@ -18,7 +19,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     InfoDialogComponent,
     DeleteDialogComponent,
     GenericDialogComponent,
-    ArrivalDialogComponent
+    CommentDialogComponent,
   ],
   imports: [
     CommonModule,

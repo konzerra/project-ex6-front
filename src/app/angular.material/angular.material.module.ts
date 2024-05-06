@@ -13,6 +13,8 @@ import {MatStepperModule} from "@angular/material/stepper";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatBadgeModule} from "@angular/material/badge";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 
 
@@ -33,7 +35,9 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     MatStepperModule,
     MatInputModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatBadgeModule,
+    MatExpansionModule
   ],
   exports:[
     MatDialogModule,
@@ -48,7 +52,9 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     MatStepperModule,
     MatInputModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatBadgeModule,
+    MatExpansionModule,
   ],
 
   providers:[

@@ -19,4 +19,8 @@ export class SigninComponent {
   }
 
   protected readonly checkFormControl = checkFormControl;
+
+  register() {
+    this.authViewService.signupRotate()
+  }
 }

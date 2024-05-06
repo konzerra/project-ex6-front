@@ -4,18 +4,22 @@ import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import { ProfileComponent } from './profile/profile.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AngularMaterialModule} from "../../angular.material/angular.material.module";
+import { UserAddressComponent } from './user.address/user.address.component';
 
 
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    ProfileComponent,
+    UserAddressComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AngularMaterialModule
   ]
 })
 export class UserModule { }

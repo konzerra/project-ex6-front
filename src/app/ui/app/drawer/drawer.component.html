@@ -1,6 +1,25 @@
+<mat-toolbar class="mat-elevation-z3">
+    <button mat-icon-button (click)="menuClicked()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>New Silk Road</span>
+    <span class="spacer"></span>
+    <a routerLink="/checkout/cart">
+      <button mat-icon-button  aria-label="Account icon">
+        <mat-icon matBadge="{{cartService.getTotalItems()}}" [matBadgeHidden]="cartService.getTotalItems()<1" matBadgeColor="warn">shopping_cart</mat-icon>
+      </button>
+    </a>
 
+    <a routerLink="/user">
+      <button mat-icon-button  aria-label="Account icon" >
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </a>
+
+  </mat-toolbar>
 <mat-sidenav-container>
-  <mat-sidenav opened="true" mode="side" [style.width]="'250px'">
+  <mat-sidenav [opened]="drawerOpened" mode="side" [style.width]="'250px'">
+    <br>
     <mat-tree class="w-100" [dataSource]="dataSource" [treeControl]="treeControl">
       <!-- This is the tree node template for leaf nodes -->
       <mat-tree-node class="w-100" *matTreeNodeDef="let node" >
@@ -16,7 +35,7 @@
 
       </mat-tree-node>
       <!-- This is the tree node template for expandable nodes -->
-      <mat-tree-node class="w-100" *matTreeNodeDef="let node;when: hasChild">
+      <mat-tree-node class="w-100 " *matTreeNodeDef="let node;when: hasChild">
         <mat-nav-list class="w-100 p-0" matTreeNodeToggle
                       [attr.aria-label]="'Toggle ' + node.name">
           <a mat-list-item >
@@ -33,7 +52,7 @@
     </mat-tree>
     <mat-divider></mat-divider>
     <mat-nav-list class="w-100 p-0">
-      <a mat-list-item routerLink="/cart">
+      <a mat-list-item routerLink="/public/about">
         <mat-icon matListItemIcon class="mat-icon-rtl-mirror" >
         </mat-icon>
         <span matListItemTitle>About</span>
@@ -52,5 +71,15 @@
   </mat-sidenav>
   <mat-sidenav-content class="content">
     <router-outlet></router-outlet>
+    <div class="char-form" [ngClass]="chatOpened? 'chat-open' : ''" >
+      <div class="pop-up" [ngClass]="chatOpened? 'pop-up-open' : ''">
+       <app-chat></app-chat>
+      </div>
+
+      <div class="text-center chat-btn" (click)="openChat()">
+        <label class="chat-btn">{{chatOpened? 'Close' : 'Chat'}}</label>
+      </div>
+
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

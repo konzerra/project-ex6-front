@@ -7,6 +7,7 @@ import {authorities} from "./ui/auth/Authorities";
 
 const routes: Routes = [
 
+
   {
     path: 'products',
     loadChildren: () => import('./ui/product/product.module').then(m => m.ProductModule)
@@ -28,6 +29,10 @@ const routes: Routes = [
     canActivate:[AuthGuard], data:{authority: authorities.portal.main},
   },
   { path: 'forbidden', component: ForbiddenComponent },
+  {
+    path: 'public',
+    loadChildren: () => import('./ui/public/public.module').then(m => m.PublicModule)
+  },
   { path: '**', redirectTo: 'products', pathMatch: 'prefix' },
 ];
 

@@ -1,4 +1,5 @@
-
+@import "src/assets/colors";
+@import "src/assets/forms";
 mat-sidenav-container{
   height: calc(100vh - 64px);
 }
@@ -9,3 +10,52 @@ mat-sidenav-container{
 .center-text{
   text-align: center;
 }
+mat-toolbar{
+  position: relative;
+  background-color: $p-dark-blue;
+  color: $p-white;
+  z-index: 5;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+mat-icon{
+  color: $p-white;
+}
+
+.char-form{
+  background-color: $p-dark-blue;
+  width: 100px;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  transition:  width 0.3s ease;
+}
+
+.chat-open{
+  opacity: 0.9;
+  width: 350px;
+}
+
+.pop-up {
+  display: none;
+  height: 0;
+  opacity: 0;
+  transition: 0.6s ease;
+}
+.pop-up-open {
+  display: block;
+  opacity: 1;
+  height: auto;
+
+}
+.chat-btn{
+  z-index: 9;
+  cursor: pointer;
+}
+

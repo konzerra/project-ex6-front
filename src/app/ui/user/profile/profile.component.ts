@@ -5,6 +5,7 @@ import {DialogsService} from "../../../shared/dialogs.service";
 import {DatePipe} from "@angular/common";
 import {User} from "../../../domain/user/User";
 import {Router} from "@angular/router";
+import {AuthViewService} from "../../auth/auth-view.service";
 
 
 @Component({
@@ -15,26 +16,31 @@ import {Router} from "@angular/router";
 export class ProfileComponent implements OnInit{
 
   user: User | null = null;
+  menu:string = "address";
 
   constructor(
     private authService: AuthService,
+    private authViewService: AuthViewService,
     private userService: UserService,
     private dialogsService: DialogsService,
-    private datePipe: DatePipe,
     private router: Router
   ) {
   }
 
   ngOnInit(): void {
     this.user = this.authService.getUser()
-    console.log("user: "+this.user)
+    console.log(this.user)
     if(this.user == null) {
       this.router.navigate(["/auth"])
     }
+  }
 
+  onMenuChanged(menu:string) {
+    this.menu = menu;
   }
 
   logout() {
-    this.authService.logout()
+    this.authViewService.logout()
+    this.router.navigate(["/products"]);
   }
 }

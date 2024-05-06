@@ -4,6 +4,8 @@ import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
 import {categoriesData} from "./data/CateogiesData";
 import {Router} from "@angular/router";
+import {CartViewService} from "../../checkout/cart.view.service";
+import {checkFormControl} from "../../../utils/checkFormControl";
 
 /** Flat node with expandable and level information */
 interface FlatNode {
@@ -22,8 +24,11 @@ interface FlatNode {
 })
 export class DrawerComponent {
 
+  drawerOpened=true
+  protected chatOpened: boolean = false;
   constructor(
-    private router: Router
+    private router: Router,
+    public cartService: CartViewService
   ) {
     this.dataSource.data = categoriesData;
   }
@@ -37,6 +42,10 @@ export class DrawerComponent {
       level: level,
     };
   };
+
+  menuClicked(){
+    this.drawerOpened = !this.drawerOpened;
+  }
 
 
   treeControl = new FlatTreeControl<FlatNode>(
@@ -57,9 +66,10 @@ export class DrawerComponent {
 
   hasChild = (_: number, node: FlatNode) => node.expandable;
 
+
+
+
   subCategoryClicked(node: CategoryNode) {
-    console.log(node)
-    console.log("Sub Category Clicked");
     this.router.navigate(['/products/category'], {
       queryParams: {
         cat: node.parentId,
@@ -70,10 +80,17 @@ export class DrawerComponent {
       // 'replace' will replace the existing query parameters with the new ones
       skipLocationChange: false,
     }).catch(error => {
-      console.error('Navigation error:', error);
+
     })
       .finally(()=>{
-        console.log("Naviageated")
+
       });
   }
+
+  openChat() {
+    console.log('openChat');
+    this.chatOpened = !this.chatOpened
+  }
+
+  protected readonly checkFormControl = checkFormControl;
 }

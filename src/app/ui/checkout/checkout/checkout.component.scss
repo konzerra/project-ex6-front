@@ -1,0 +1,42 @@
+@import "src/assets/colors";
+@import "src/assets/buttons";
+@import "src/assets/forms";
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto; /* Creates three columns of equal width */
+  gap: 10px; /* Space between cards */
+
+}
+
+.mat-step-header .mat-step-icon-selected {
+  background-color: $p-dark-blue!important;
+}
+
+.p-btn-dark-on-white{
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.p-btn-white-on-white{
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.grid-container-cvv {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Creates three columns of equal width */
+  gap: 10px; /* Space between cards */
+
+}
+.empty-cart{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  mat-icon{
+    color: $p-dark-blue;
+    font-size: 128px!important;
+    width: 128px!important;
+    height: 128px!important;
+  }
+}

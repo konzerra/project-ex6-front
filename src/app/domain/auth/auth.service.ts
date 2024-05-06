@@ -3,20 +3,18 @@ import {Injectable} from '@angular/core';
 
 import {DialogsService} from '../../shared/dialogs.service';
 import {Router} from '@angular/router';
-import {BehaviorSubject, Observable, Subject} from "rxjs";
-import {AuthSigninDto} from "./AuthSigninDto";
-import {AuthSignupDto} from "./AuthSignupDto";
+import {catchError, map, Observable, of} from "rxjs";
+import {AuthSigninDto} from "./dto/AuthSigninDto";
+import {AuthSignupDto} from "./dto/AuthSignupDto";
 import {AuthApi} from "./AuthApi";
 import {Role} from "../user/Role";
-import {JwtDto} from "./JwtDto";
+import {JwtDto} from "./dto/JwtDto";
 import {User} from "../user/User";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  signedIn: boolean = false;
-  public signedInObservable = new Subject<void>()
 
 
   constructor(
@@ -29,39 +27,45 @@ export class AuthService {
     //this.signedIn = true
     //TODO
     //emit signedInObservable if user signed in already
-    if(this.getUser()){
-      this.signedIn = true
-      this.signedInObservable.next()
-
-    }
+    // if(this.getUser()){
+    //   this.signedIn = true
+    //   this.signedInObservable.next(true)
+    // }
   }
 
 
   public setData(jwtDto: JwtDto) {
     this.setUser(jwtDto.user)
-    this.setJwtToken(jwtDto.jwtToken)
+    this.setJwtToken(jwtDto.token)
     this.setRole(jwtDto.user.roles)
   }
 
-  signin(signinDto:AuthSigninDto){
-    this.httpClient.post<JwtDto>(AuthApi.signin, signinDto
-    ).subscribe({
-      next:(v)=>{
-        this.setData(v)
-        console.log(v)
-        this.signedIn = true
-        this.signedInObservable.next()
-        this.router.navigate(["/user"])
-      },
-      error:(err)=>{
-        this.dialogsService.openInfoDialog("Не смогли войти, обновите страницу")
-        this.router.navigate(["/auth"])
-      }
-    })
+  signin(signinDto: AuthSigninDto): Observable<boolean> {
+    return this.httpClient.post<JwtDto>(AuthApi.signin, signinDto).pipe(
+      map(v => {
+        this.setData(v);
+        return true;
+      }),
+      catchError(err => {
+        this.dialogsService.openInfoDialog("Cannot signin, check credentials");
+        this.router.navigate(["/auth"]);
+        return of(false); // Return an Observable<boolean> indicating failure
+      })
+    );
   }
 
   signup(signupDto: AuthSignupDto){
-    return this.httpClient.post(AuthApi.signup,signupDto)
+    return this.httpClient.post<JwtDto>(AuthApi.signup, signupDto).pipe(
+      map(v => {
+        this.setData(v);
+        return true;
+      }),
+      catchError(err => {
+        this.dialogsService.openInfoDialog("Cannot signup");
+        this.router.navigate(["/auth"]);
+        return of(false); // Return an Observable<boolean> indicating failure
+      })
+    );
   }
 
   // resetPassword(resetDto:AuthResetDto){
@@ -124,6 +128,7 @@ export class AuthService {
     return localStorage.getItem("jwtToken")
   }
 
+  //Recommended to cal in authViewService only
   logout() {
     localStorage.removeItem('user')
     localStorage.removeItem('jwtToken')
@@ -148,15 +153,5 @@ export class AuthService {
     const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
     return (Math.floor((new Date).getTime() / 1000)) >= expiry;
   }
-
-
-  onSignin(){
-    return this.signedInObservable.asObservable()
-  }
-
-  onWebOpened(){
-    this.signedInObservable.next()
-  }
-
 
 }

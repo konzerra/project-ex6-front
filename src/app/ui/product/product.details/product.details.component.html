@@ -1,0 +1,96 @@
+<div *ngIf="product" class="row mt-5" #scrollContainer>
+
+  <div class="col-md-6 col-lg-4" >
+    <swiper-container
+        slides-per-view="1"
+        speed="500"
+        navigation="true"
+        pagination="true"
+        pagination-clickable="true"
+        centered-slides="true"
+        css-mode="true"
+        allow-touch-move="true"
+      >
+          <swiper-slide *ngFor="let imgUrl of product.images">
+            <div class="swiper-content">
+              <img class="img" [src]="imgUrl">
+            </div>
+
+          </swiper-slide>
+    </swiper-container>
+  </div>
+  <div class="col-md-6 col-lg-4">
+    <h3>{{product.name}}</h3>
+    <p>Price: {{product.price}} $</p>
+    <button class="card-flat-btn" mat-flat-button (click)="addToCart(product)" >
+          <mat-icon>shopping_cart</mat-icon>
+          to Cart
+        </button>
+    <button class="card-btn" mat-button (click)="buy(product)">
+            <mat-icon>shopping_cart</mat-icon>
+            Buy
+    </button>
+    <mat-expansion-panel class="mt-4 expansion-panel">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{rating.toFixed(1)}}⭐ of 5⭐
+      </mat-panel-title>
+      <mat-panel-description>
+        ({{comments.length}} reviews)
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+      <label class="comment mb-2" (click)="leaveComment()">Leave a comment</label>
+      <div *ngFor="let comment of comments">
+        <mat-divider></mat-divider>
+        <div class="grid-container-comment username">
+          <label>{{comment.username}}</label>
+          <div class="w-100">
+            <span>{{rating.toFixed(1)}}⭐</span>
+          </div>
+        </div>
+        <label>{{comment.content}}</label>
+         <br>
+        <label class="date-string mt-1">{{comment.date}}</label>
+
+      </div>
+
+  </mat-expansion-panel>
+  </div>
+
+
+<div class="mt-5">
+  <h2>Related Products</h2>
+  <div class="grid-container">
+      <div *ngFor="let product of modelPage.content">
+        <mat-card class="example-card" >
+        <img class="card-image" mat-card-image src="{{product.images[0]}}" alt="Photo of a product">
+        <mat-card-content>
+          <p class="mt-3">
+            {{product.name}}
+          </p>
+          <span>Price: {{ product.price }}$</span>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button class="card-btn" mat-button (click)="addToCart(product)">
+            <mat-icon>shopping_cart</mat-icon>
+            to Cart
+          </button>
+          <button class="card-btn" mat-button (click)="navigateToDetails(product.id)">
+             <mat-icon>view_in_ar</mat-icon>
+            View
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      </div>
+  </div>
+  <mat-paginator class="ms-4 mt-5 mb-5 me-4"
+      [length]="modelPage.totalElements"
+      [pageSize]="modelPage.size"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="onPageChange($event)">
+  </mat-paginator>
+</div>
+</div>
+
+

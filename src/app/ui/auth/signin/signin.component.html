@@ -1,6 +1,6 @@
 
 <div class="form-panel">
-  <label class="title ">Войти в систему</label>
+  <label class="title ">Signin</label>
   <form class="">
 
     <div class="form-input">
@@ -9,32 +9,35 @@
              id="email"
              class=""
              [formControl]="authViewService.email"
-             placeholder="введите почту"
+             placeholder="Enter email"
              required autofocus="autofocus" />
       <div *ngIf="checkFormControl(authViewService.email)"
-           class="alert-danger">
+           class="alert-danger-parent">
 
-        <div *ngIf="checkFormControl(authViewService.email)">
-          Введите почту
+        <div class="alert-danger" *ngIf="checkFormControl(authViewService.email)">
+          Enter email
         </div>
       </div>
     </div>
     <div class="form-input">
-      <label class="mt-3" for="email"> Пароль </label>
-      <input type="text"
+      <label class="mt-3" for="email"> Password </label>
+      <input type="password"
              id="password"
              class=""
              [formControl]="authViewService.password"
-             placeholder="введите пароль"
+             placeholder="Enter password"
              required autofocus="autofocus" />
       <div *ngIf="checkFormControl(authViewService.password)"
-           class="alert-danger">
+           class="alert-danger-parent">
 
-        <div *ngIf="checkFormControl(authViewService.password)">
-          Введите пароль
+        <div class="alert-danger" *ngIf="checkFormControl(authViewService.password)">
+          Enter password
         </div>
       </div>
     </div>
-    <button type="button" (click)="signin()" class="gf-btn-white btn mt-4">Войти</button>
+    <a class="link" (click)="register()">
+      Register?
+    </a>
+    <button type="button" (click)="signin()" class="p-btn-white btn mt-4">Sigin</button>
   </form>
 </div>

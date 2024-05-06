@@ -5,14 +5,13 @@
   padding: 0;
 }
 
-body {
-  height: 100vh;
+.auth-container {
+  height: 80vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $gf-white;
-  background-color: $gf-weak-white;
+  color: $p-white;
   border-radius: 7px;
 }
 
@@ -31,7 +30,7 @@ body {
 }
 
 .panel {
-  background-color: $gf-dark-blue;
+  background-color: $p-dark-blue;
   height: 100%;
   width: 100%;
   position: relative;

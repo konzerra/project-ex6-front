@@ -12,9 +12,11 @@ export class SignupComponent {
     public authViewService: AuthViewService
   ) {
   }
-  signin() {
-    this.authViewService.signin()
+  signup() {
+    this.authViewService.signup()
   }
-
+  signin(){
+    this.authViewService.signinRotate()
+  }
   protected readonly checkFormControl = checkFormControl;
 }

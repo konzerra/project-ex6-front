@@ -1,5 +1,7 @@
 @import "src/assets/colors";
 @import "src/assets/buttons";
+
+
 .form-panel-white-on-dark{
   height: 100%;
   width: 100%;
@@ -14,34 +16,62 @@
   div{
     background-color: transparent;
   }
+  input{
+    width: 100%;
+    background-color: transparent;
+    color: $p-white; // Set the text color
+    border: 2px solid $p-white;
+    &::placeholder {
+      color: $p-weak-white; // Set the placeholder color
+    }
+    padding: 7px;
+    outline: $p-white;
+    transition: outline-color 0.3s ease;
+    &:focus {
+      outline-color: $p-white;
+    }
+  }
+  textarea{
+    width: 100%;
+    background-color: transparent;
+    color: $p-white; // Set the text color
+    border: 2px solid $p-white;
+    &::placeholder {
+      color: $p-weak-white; // Set the placeholder color
+    }
+    padding: 7px;
+    outline: $p-white;
+    transition: outline-color 0.3s ease;
+    &:focus {
+      outline-color: $p-white;
+    }
+  }
+
   .form-input{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     label {
-      color: $gf-white; // Set the text color for the label
+      color: $p-white; // Set the text color for the label
     }
 
-    input{
-      width: 100%;
-      background-color: transparent;
-      color: $gf-white; // Set the text color
-      border: 2px solid $gf-white;
-      &::placeholder {
-        color: $gf-weak-white; // Set the placeholder color
-      }
-      padding: 7px;
-      outline: $gf-white;
-      transition: outline-color 0.3s ease;
-      &:focus {
-        outline-color: $gf-white;
-      }
-    }
+
     .alert-danger{
-      background-color: $gf-white;
-      color: $gf-weak-dark-blue;
+      background-color: $p-white;
+      color: $p-weak-dark-blue;
       width: 100%;
     }
+  }
+  .alert-danger-parent{
+      width: 100%;
+      position: relative;
+    }
+  .alert-danger{
+    padding-left: 7px;
+    width: 100%;
+    background-color: $p-white;
+    color: $p-dark-blue ;
+    position: absolute;
   }
 
 }
@@ -54,36 +84,68 @@
   form{
     width: 100%;
   }
+  input{
+      width: 100%;
+      background-color: transparent;
+      color: $p-dark-blue; // Set the text color
+      &::placeholder {
+        color: $p-weak-dark-blue; // Set the placeholder color
+      }
+      padding: 7px;
+      outline: $p-dark-blue;
+      transition: outline-color 0.3s ease;
+      &:focus {
+        outline-color: $p-dark-blue;
+      }
+  }
+  select{
+    background-color: transparent;
+    color: $p-dark-blue; // Set the text color
+    &::placeholder {
+      color: $p-weak-dark-blue; // Set the placeholder color
+    }
+    padding: 7px;
+    outline: $p-dark-blue;
+    transition: outline-color 0.3s ease;
+    &:focus {
+      outline-color: $p-dark-blue;
+    }
+  }
+  text-area{
+      width: 100%;
+      background-color: transparent;
+      color: $p-dark-blue; // Set the text color
+      &::placeholder {
+        color: $p-weak-dark-blue; // Set the placeholder color
+      }
+      padding: 7px;
+      outline: $p-dark-blue;
+      transition: outline-color 0.3s ease;
+      &:focus {
+        outline-color: $p-dark-blue;
+      }
+  }
   .form-input{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding-right: 0;
     width: 100%;
+    border: 2px solid $p-dark-blue;
     label {
-      color: $gf-dark-blue; // Set the text color for the label
+      color: $p-dark-blue; // Set the text color for the label
     }
-
-    input{
+  }
+  .alert-danger-parent{
       width: 100%;
-      background-color: transparent;
-      color: $gf-dark-blue; // Set the text color
-      border: 2px solid $gf-dark-blue;
-      &::placeholder {
-        color: $gf-weak-dark-blue; // Set the placeholder color
-      }
-      padding: 7px;
-      outline: $gf-dark-blue;
-      transition: outline-color 0.3s ease;
-      &:focus {
-        outline-color: $gf-dark-blue;
-      }
+      position: relative;
     }
-    .alert-danger{
-      background-color: $gf-dark-blue;
-      color: $gf-weak-white;
-      width: 100%;
-    }
+  .alert-danger{
+    padding-left: 7px;
+    width: 100%;
+    background-color: $p-dark-blue;
+    color: $p-white;
+    position: absolute;
   }
 
 }

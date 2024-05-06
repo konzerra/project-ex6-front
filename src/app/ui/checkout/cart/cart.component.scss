@@ -1,4 +1,5 @@
-
+@import "src/assets/buttons";
+@import "src/assets/colors";
 .btn-sml{
   width: 24px!important;
       min-width: unset!important;
@@ -6,5 +7,18 @@
   padding: 0;
   span{
     padding: 0;
+  }
+}
+
+.empty-cart{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  mat-icon{
+    color: $p-dark-blue;
+    font-size: 128px!important;
+    width: 128px!important;
+    height: 128px!important;
   }
 }

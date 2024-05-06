@@ -13,6 +13,10 @@ export class CartViewService {
   $cartList = this.cartList.asObservable()
   constructor() {
 
+    this.getCart()
+    this.$cartList.subscribe(cart=>{
+      this.cacheCart(cart)
+    })
   }
 
   addCart(product: Product){
@@ -30,8 +34,6 @@ export class CartViewService {
   deleteFromCart(product: Product): void {
     let currentItems = this.cartList.value;
     currentItems = currentItems.filter(item => item.product.id !== product.id);
-    console.log("after deleting")
-    console.log(currentItems);
     this.cartList.next(currentItems); // Notify all subscribers of the update
   }
 
@@ -44,11 +46,32 @@ export class CartViewService {
       this.cartList.next(currentItems);
     }
     if (foundItem && foundItem.quantity < 1) {
-      console.log("Entered deleting")
       this.deleteFromCart(product); // Remove the item if quantity is set to 0
     }
   }
 
+  getTotalItems(): number {
+    return this.cartList.value.length
+  }
+
+  private cacheCart(cart: Cart[]): void {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  private getCart(){
+    let cartStr = localStorage.getItem("cart")
+    if(cartStr){
+      let cachedCart = JSON.parse(cartStr)
+      this.cartList.next(cachedCart)
+
+    }
+
+  }
+
+  clearCart(){
+    localStorage.removeItem("cart")
+    this.cartList.next([])
+  }
 
 
 }

@@ -1,0 +1,79 @@
+
+
+<div>
+  <form class="">
+    <div class="form-panel-dark-on-white">
+      <label class="mt-3" for="country"> Country </label>
+      <input type="text"
+             id="country"
+             class="form-input"
+             [formControl]="country"
+             placeholder="Enter email"
+             required autofocus="autofocus" />
+      <div *ngIf="checkFormControl(country)"
+           class="alert-danger-parent">
+        <div class="alert-danger" *ngIf="checkFormControl(country)">
+          Enter country
+        </div>
+      </div>
+    </div>
+    <div class="grid-container">
+      <div>
+        <div class="form-panel-dark-on-white">
+          <label class="mt-3" for="country"> City </label>
+          <input type="text"
+                 id="city"
+                 class="form-input"
+                 [formControl]="city"
+                 placeholder="Enter city"
+                 required autofocus="autofocus" />
+          <div *ngIf="checkFormControl(city)"
+               class="alert-danger-parent">
+            <div class="alert-danger" *ngIf="checkFormControl(city)">
+              Enter country
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="form-panel-dark-on-white">
+          <label class="mt-3" for="country"> Postal code </label>
+          <input type="text"
+                 id="postalCode"
+                 class="form-input"
+                 [formControl]="postalCode"
+                 placeholder="Enter postal code"
+                 required autofocus="autofocus" />
+          <div *ngIf="checkFormControl(postalCode)"
+               class="alert-danger-parent">
+            <div class="alert-danger" *ngIf="checkFormControl(postalCode)">
+              Enter postal code
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Full address -->
+    <div class="form-panel-dark-on-white">
+          <label class="mt-3" for="country"> Address </label>
+          <textarea type="text"
+                 id="fullAddress"
+                 class="form-input" rows="2"
+                 [formControl]="fullAddress"
+                 placeholder="Enter full address (city district, street, house)"
+                 required autofocus="autofocus"></textarea>
+          <div *ngIf="checkFormControl(fullAddress)"
+               class="alert-danger-parent">
+            <div class="alert-danger" *ngIf="checkFormControl(fullAddress)">
+              Enter full address
+            </div>
+          </div>
+    </div>
+
+  </form>
+  <button class="p-btn-dark-on-white save-btn mt-3" (click)="save()">
+    Save
+  </button>
+</div>

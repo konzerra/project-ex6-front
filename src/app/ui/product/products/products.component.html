@@ -1,39 +1,64 @@
-<div>
-  <h2>Products</h2>
-  <mat-form-field>
-    <mat-label>Sort</mat-label>
-    <mat-select [(ngModel)]="selectedSorting" name="food"
-                (selectionchange)="onSortChange($event)"
-    >
-      <mat-option *ngFor="let sort of sorting"
-        [value]="sort.value">{{sort.viewValue}}
-      </mat-option>
 
-    </mat-select>
-  </mat-form-field>
+
+<div>
+  <h3>Products</h3>
+  <div class="col-md-7 col-lg-5 grid-container-search mb-4">
+
+    <div class="search-container">
+      <div class="form-panel-dark-on-white input-container">
+          <input type="search"
+                 id="search-text"
+                 class="form-input"
+                 [formControl]="searchText"
+                 placeholder="Search"
+                 />
+      </div>
+      <button class="p-btn-dark-on-white" (click)="searchClicked()">search</button>
+    </div>
+
+    <div class="form-panel-dark-on-white">
+      <select name="selectedSorting"
+              [formControl]="selectedSorting"
+              class="form-input"
+      >
+        <option *ngFor="let sort of sorting"
+                [selected]="selectedSorting.value === sort.value"
+                [value]="sort.value">{{sort.viewValue}}
+        </option>
+
+      </select>
+    </div>
+  </div>
+
   <div class="grid-container">
       <div *ngFor="let product of modelPage.content">
         <mat-card class="example-card" >
         <img class="card-image" mat-card-image src="{{product.images[0]}}" alt="Photo of a product">
         <mat-card-content>
-          <p>
+          <p class="mt-3">
             {{product.name}}
           </p>
           <span>Price: {{ product.price }}$</span>
         </mat-card-content>
 
         <mat-card-actions>
-          <button mat-button (click)="addToCart(product)">to Cart</button>
-          <button mat-button>SHARE</button>
+          <button class="card-btn" mat-button (click)="addToCart(product)">
+            <mat-icon>shopping_cart</mat-icon>
+            to Cart
+          </button>
+          <button class="card-btn" mat-button (click)="navigateToDetails(product.id)">
+             <mat-icon>view_in_ar</mat-icon>
+            View
+          </button>
         </mat-card-actions>
       </mat-card>
       </div>
 </div>
-<mat-paginator
-    [length]="modelPage.totalElements"
-    [pageSize]="modelPage.size"
-    [pageSizeOptions]="pageSizeOptions"
-    (page)="onPageChange($event)"
-  >
+<mat-paginator class="mt-5 mb-5"
+  [length]="modelPage.totalElements"
+  [pageSize]="modelPage.size"
+  [pageSizeOptions]="pageSizeOptions"
+   [pageIndex]="modelPage.number"
+  (page)="onPageChange($event)">
 </mat-paginator>
 </div>

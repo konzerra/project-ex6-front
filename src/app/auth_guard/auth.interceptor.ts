@@ -31,19 +31,20 @@ export class AuthInterceptor implements HttpInterceptor{
       }
     })
     if(req.headers.get('No-Auth')==='true'){
+      console.log("Intercepting in non-token")
       return next.handle(req.clone()).pipe(
         catchError(
           (error:HttpErrorResponse ) =>{
             if(error.status === 0 ){
-              return throwError(()=>"Сервер сейчас не работает");
+              return throwError(()=>"Server is currently not working");
             }
             if(error.status === 404 ){
-              return throwError(()=>"Не найдено");
+              return throwError(()=>"Not found");
             }
             if(error.status === 400){
               return throwError(()=>error.error.message)
             }
-            return throwError(()=>"Неизвестная ошибка");
+            return throwError(()=>"Unexpected error");
           }
         )
       )
@@ -52,6 +53,7 @@ export class AuthInterceptor implements HttpInterceptor{
     if(token){
       req = this.addToken(req,token)
     }
+    console.log("In interceptor before request")
     return next.handle(req).pipe(
       catchError(
         (error:HttpErrorResponse ) =>{
@@ -62,7 +64,7 @@ export class AuthInterceptor implements HttpInterceptor{
             this.router.navigate(['/forbidden']);
           }
           if(error.status === 0 ){
-            return throwError(()=>"Сервер сейчас не работает");
+            return throwError(()=>"Server is currently not working");
           }
           if(error.status === 404 ){
             return throwError(()=>error.error.message);
@@ -70,7 +72,7 @@ export class AuthInterceptor implements HttpInterceptor{
           if(error.status === 400){
             return throwError(()=>error.error.message)
           }
-          return throwError(()=>"Неизвестная ошибка \n"+ error.message);
+          return throwError(()=>"Unexpected error \n"+ error.message);
         }
       )
     )

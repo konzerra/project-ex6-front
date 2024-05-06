@@ -4,7 +4,7 @@ import {ConfirmDialogComponent} from "./dialogs/confirm.dialog/confirm.dialog.co
 import {InfoDialogComponent} from "./dialogs/info.dialog/info.dialog.component";
 import {DeleteDialogComponent} from "./dialogs/delete.dialog/delete.dialog.component";
 import {GenericDialogComponent} from "./dialogs/generic-dialog/generic-dialog.component";
-import {ArrivalDialogComponent} from "./dialogs/arrival.dialog/arrival.dialog.component";
+import {CommentDialogComponent} from "./dialogs/comment.dialog/comment.dialog.component";
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +15,12 @@ export class DialogsService {
     private dialog : MatDialog
   ) { }
 
-
-  openArrivalDialog(){
-    return this.dialog.open(ArrivalDialogComponent, {
-      disableClose: true
+  openComment(){
+    return this.dialog.open(CommentDialogComponent, {
+      disableClose: true,
     })
   }
+
   openConfirmDialog(){
     return this.dialog.open(ConfirmDialogComponent,{
       disableClose:false,
