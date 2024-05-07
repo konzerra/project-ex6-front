@@ -33,24 +33,31 @@
   <div class="grid-container">
       <div *ngFor="let product of modelPage.content">
         <mat-card class="example-card" >
-        <img class="card-image" mat-card-image src="{{product.images[0]}}" alt="Photo of a product">
-        <mat-card-content>
-          <p class="mt-3">
-            {{product.name}}
-          </p>
-          <span>Price: {{ product.price }}$</span>
-        </mat-card-content>
+          <div *ngIf="product.available; else outOfStockTemplate" >
+            <img class="card-image" mat-card-image src="{{product.images[0]}}" alt="Photo of a product">
+          </div>
+          <ng-template #outOfStockTemplate>
+            <div class="out-of-stock">
+              Out of Stock
+            </div>
+          </ng-template>
+          <mat-card-content>
+            <p class="mt-3">
+              {{product.name}}
+            </p>
+            <span>Price: {{ product.price }}$</span>
+          </mat-card-content>
 
-        <mat-card-actions>
-          <button class="card-btn" mat-button (click)="addToCart(product)">
-            <mat-icon>shopping_cart</mat-icon>
-            to Cart
-          </button>
-          <button class="card-btn" mat-button (click)="navigateToDetails(product.id)">
-             <mat-icon>view_in_ar</mat-icon>
-            View
-          </button>
-        </mat-card-actions>
+          <mat-card-actions>
+            <button [disabled]="!product.available" class="card-btn" mat-button (click)="addToCart(product)">
+              <mat-icon>shopping_cart</mat-icon>
+              to Cart
+            </button>
+            <button  [disabled]="!product.available" class="card-btn" mat-button (click)="navigateToDetails(product.id)">
+               <mat-icon>view_in_ar</mat-icon>
+              View
+            </button>
+          </mat-card-actions>
       </mat-card>
       </div>
 </div>

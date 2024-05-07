@@ -7,5 +7,6 @@ export interface Product {
   category: number;
   subCategory: number;
   images: string[]
-  comments: Comment[] | null
+  comments: Comment[] | null,
+  available: boolean
 }
